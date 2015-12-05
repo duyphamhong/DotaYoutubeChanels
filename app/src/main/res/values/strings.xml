@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DotaYoutubeChanels</string>
+
+    <!-- action string-->
+    <string name="action_yes">Yes</string>
+    <string name="action_no">No</string>
+    <string name="action_ok">Ok</string>
+    <!-- end action string-->
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="connection_fail_message">No connection detected! Please check your wifi signal and restart the application</string>
+    <string name="connection_status_message">No connection</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
