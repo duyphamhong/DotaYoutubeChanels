@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/libs/YouTubeAndroidPlayerApi.jar" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/youtubeapp/doto/dotayoutubechanels/activities/activities/YouTubeFailureRecoveryActivity.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/youtubeapp/doto/dotayoutubechanels/activities/adapters/DemoArrayAdapter.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/youtubeapp/doto/dotayoutubechanels/activities/adapters/DemoListViewItem.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/youtubeapp/doto/dotayoutubechanels/activities/utils/DeveloperKey.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout-land" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/values/constants.xml" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/libs/YouTubeAndroidPlayerApi.jar" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

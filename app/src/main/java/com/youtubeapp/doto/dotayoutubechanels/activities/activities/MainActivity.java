@@ -1,13 +1,35 @@
 package com.youtubeapp.doto.dotayoutubechanels.activities.activities;
 
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.youtube.player.YouTubeApiServiceUtil;
+import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.youtubeapp.doto.dotayoutubechanels.R;
+import com.youtubeapp.doto.dotayoutubechanels.activities.adapters.DemoArrayAdapter;
+import com.youtubeapp.doto.dotayoutubechanels.activities.adapters.DemoListViewItem;
 import com.youtubeapp.doto.dotayoutubechanels.activities.adapters.TabPagerAdapter;
+import com.youtubeapp.doto.dotayoutubechanels.activities.fragments.ListVideoFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
@@ -24,9 +46,14 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
         actionBar = getSupportActionBar();
 
-        // Init tabs host
-        initTabsHost();
-
+        //Check for any issues
+        final YouTubeInitializationResult result = YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
+        if (result == YouTubeInitializationResult.SUCCESS) {
+            // Init tabs host
+            initTabsHost();
+        } else {
+            result.getErrorDialog(this, 0).show();
+        }
     }
 
     /*
@@ -82,4 +109,5 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
     }
+
 }
