@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:id="@+id/btn_get_notification"
+        style="@style/ContextMenuButton"
+        android:text="GET NOTIFICATION"
+        android:textColor="@color/btn_context_menu_text_red" />
+
+    <Button
+        android:id="@+id/btn_share"
+        style="@style/ContextMenuButton"
+        android:text="SHARE" />
+
+    <Button
+        android:id="@+id/btn_more_info"
+        style="@style/ContextMenuButton"
+        android:text="MORE INFORMATION" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        style="@style/ContextMenuButton"
+        android:text="CANCEL" />
+
+</merge>

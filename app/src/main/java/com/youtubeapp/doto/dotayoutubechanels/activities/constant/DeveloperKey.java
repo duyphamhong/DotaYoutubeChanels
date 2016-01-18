@@ -1,6 +1,6 @@
 // Copyright 2014 Google Inc. All Rights Reserved.
 
-package com.youtubeapp.doto.dotayoutubechanels.activities.utils;
+package com.youtubeapp.doto.dotayoutubechanels.activities.constant;
 
 /**
  * Static container class for holding a reference to your YouTube Developer Key.
@@ -13,6 +13,6 @@ public class DeveloperKey {
    * <a href="https://console.developers.google.com/">Google Developers Console</a>
    * to register a new developer key.
    */
-  public static final String DEVELOPER_KEY = "AIzaSyA65x3lOn8samX7UZHvW81ue2f1G-qmtG0";
+  public static final String DEVELOPER_KEY = "AIzaSyA2EEYoyaQRa6uQCHXR9BLyaJ5vFohgyNA";
 
 }

@@ -1,56 +1,58 @@
 package com.youtubeapp.doto.dotayoutubechanels.activities.activities;
 
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.support.v7.app.ActionBarActivity;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.youtubeapp.doto.dotayoutubechanels.R;
-import com.youtubeapp.doto.dotayoutubechanels.activities.adapters.DemoArrayAdapter;
-import com.youtubeapp.doto.dotayoutubechanels.activities.adapters.DemoListViewItem;
+import com.youtubeapp.doto.dotayoutubechanels.activities.Interface.IGettingServiceInfoCompletedListener;
 import com.youtubeapp.doto.dotayoutubechanels.activities.adapters.TabPagerAdapter;
-import com.youtubeapp.doto.dotayoutubechanels.activities.fragments.ListVideoFragment;
+import com.youtubeapp.doto.dotayoutubechanels.activities.animation.ZoomOutPageTransformer;
+import com.youtubeapp.doto.dotayoutubechanels.activities.models.ChannelItem;
+import com.youtubeapp.doto.dotayoutubechanels.activities.utils.ChannelsListResponeTask;
+
+import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
-public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
+public class MainActivity extends ActionBarActivity implements ActionBar.TabListener, IGettingServiceInfoCompletedListener<ChannelItem> {
 
     //----------------------- INIT VARIABLE ---------------------------
     private ViewPager viewPager;
     private TabPagerAdapter pagerAdapter;
     private ActionBar actionBar;
-    private String[] tabs = {"Tab1", "Tab2", "Tab3"};
+    private String[] tabs = {"Channel", "Your Favor", "Live"};
+    private LoadToast loadToast;
+
+    private ArrayList<ChannelItem> channelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        actionBar = getSupportActionBar();
-
         //Check for any issues
         final YouTubeInitializationResult result = YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
         if (result == YouTubeInitializationResult.SUCCESS) {
-            // Init tabs host
-            initTabsHost();
+            actionBar = getSupportActionBar();
+
+            loadToast = new LoadToast(this);
+            loadToast.setTranslationY(500);
+            loadToast.setBackgroundColor(Color.DKGRAY);
+
+            channelList = new ArrayList<ChannelItem>();
+
+            loadToast.setText("Loading...........").show();
+            new ChannelsListResponeTask(this).execute();
+
         } else {
             result.getErrorDialog(this, 0).show();
         }
@@ -61,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     * */
     private void initTabsHost() {
         viewPager = (ViewPager) findViewById(R.id.mainViewPager);
-        pagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), this, channelList);
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
         viewPager.setAdapter(pagerAdapter);
         actionBar.setHomeButtonEnabled(false);
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         /**
          * on swiping the viewpager make respective tab selected
          * */
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
@@ -93,6 +96,18 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+
+
+    }
+
+    /*
+     * adds the fragment to the FrameLayout
+     */
+    public void pushFragments(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.mainViewPager, fragment)
+                .commitAllowingStateLoss();
     }
 
     @Override
@@ -108,6 +123,23 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onGetListCompleted(ArrayList<ChannelItem> list) {
+        if (list != null) {
+            loadToast.success();
+
+            channelList = list;
+            initTabsHost();
+        } else {
+            loadToast.error();
+        }
     }
 
 }

@@ -5,10 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context="com.youtubeapp.doto.youtubedota.activities.SplashScreenActivity">
-    <ImageView
+    <TextView
+        android:id="@+id/tv_loading_screen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/splashbacground1"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:text="DOTA CINEMA"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_loading_screen_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:textSize="10dp"
+        android:text="OKE"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="10dp"
+        android:text="copyright: DuyPH"
+        android:gravity="center"/>
 
 </LinearLayout>

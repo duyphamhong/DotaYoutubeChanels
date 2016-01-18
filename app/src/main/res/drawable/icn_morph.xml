@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_action_view_as_grid">
+    <target
+        android:name="sm_vertical_line"
+        android:animation="@anim/path_morph" />
+    <target
+        android:name="lg_vertical_line"
+        android:animation="@anim/path_morph_lg" />
+    <target
+        android:name="horizontal_line"
+        android:animation="@anim/fade_out" />
+
+</animated-vector>

@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#4e110c</color>
+    <color name="colorPrimaryDark">#682b26</color>
+    <color name="colorAccent">#aea09a</color>
     <color name="gray">#ff888888</color>
+    <color name="transparent40">#4D000000</color>
+    <color name="transparent20">#33000000</color>
+
+    <color name="transparent_black">#7d7d7d</color>
+    <color name="transparent_black2">#E6000000</color>
+    <color name="black">#000000</color>
+    <color name="dark_green">#5B852D</color>
+    <color name="light_gray">#F2F2F2</color>
+    <color name="photo_tint">#7f101010</color>
+
+    <color name="cardview_background">#868383</color>
+    <color name="text_color">#d6c7c7</color>
+
+    <color name="card_view_color">#5e3834</color>
+    <color name="card_view_color_dark">#665656</color>
+
+    <color name="btn_default_light_normal">#00000000</color>
+    <color name="btn_default_light_pressed">#40ffffff</color>
+    <color name="btn_send_normal">#02c754</color>
+    <color name="btn_send_pressed">#006633</color>
+    <color name="btn_default_shadow">#99000000</color>
+    <color name="btn_context_menu_normal">#9e8e8d</color>
+    <color name="btn_context_menu_pressed">#40000000</color>
+    <color name="btn_context_menu_text_red">#ffff0000</color>
+
+    <color name="split_line_color">#eeeeee</color>
+    <color name="hint_color">#665656</color>
 </resources>
